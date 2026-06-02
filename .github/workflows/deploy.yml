@@ -27,7 +27,7 @@ jobs:
         run: |
           docker build -t node-aws-app .
           docker tag node-aws-app:latest $ECR_REGISTRY/node-aws-app:latest
-          docker push $ECR_REGISTRY/my-node-app:latest
+          docker push $ECR_REGISTRY/node-aws-app:latest
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@master
@@ -37,5 +37,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           script: |
             aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 510720290862.dkr.ecr.us-east-1.amazonaws.com
-            docker pull 510720290862.dkr.ecr.us-east-1.amazonaws.com/my-node-app:latest
-            kubectl rollout restart deployment/my-app
+            docker pull 510720290862.dkr.ecr.us-east-1.amazonaws.com/node-aws-app:latest
+            docker stop node-app || true
+            docker rm node-app || true
+            docker run -d --name node-app -p 3000:3000 510720290862.dkr.ecr.us-east-1.amazonaws.com/node-aws-app:latest
