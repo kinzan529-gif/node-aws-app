@@ -25,8 +25,8 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          docker build -t my-node-app .
-          docker tag my-node-app:latest $ECR_REGISTRY/my-node-app:latest
+          docker build -t node-aws-app .
+          docker tag node-aws-app:latest $ECR_REGISTRY/node-aws-app:latest
           docker push $ECR_REGISTRY/my-node-app:latest
 
       - name: Deploy to EC2 via SSH
