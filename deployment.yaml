@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: node-aws-app
-        image: <5107-2029-0862>.dkr.ecr.us-east-1.amazonaws.com/node-aws-app:latest
+        image: 510720290862.dkr.ecr.us-east-1.amazonaws.com/node-aws-app:latest
         ports:
         - containerPort: 3000
         imagePullPolicy: Always
