@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>DevOps Web Application</title>
+            <title>My CI/CD deployment is Working</title>
             <style>
                 body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f4f6f9; color: #333; }
                 .card { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
